@@ -16,3 +16,14 @@
     <Footer />
   </div>
 </template>
+
+<script>
+
+export default {
+  beforeMount() {
+    if(!this.$store.state.auth.token) {
+      this.$store.commit('auth/addLocalStorage')
+    }
+  }
+}
+</script>

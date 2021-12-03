@@ -36,10 +36,19 @@
             </button>
             <input type="search" class="form-control" placeholder="поиск" aria-describedby="button-addon1">
           </div>
-          <button class="btn btn-outline-light" @click="$router.push('/auth')">
+          <button v-if="!$store.getters['auth/isAuthenticated']" class="btn btn-outline-light" @click="$router.push('/auth')">
             войти
           </button>
-        </div>
+          <div class="position-relative user" v-else-if="$store.getters['auth/isAuthenticated']">
+           <button class="btn btn-mm" @click="authMenu = !authMenu">
+             {{ $store.state.auth.name }}
+           </button>
+           <div class="menu position-absolute" v-if="authMenu">
+             <nuxt-link type="button" to="/admin/add_recipe">панель администратора</nuxt-link>
+             <button class="btn text-white" @click="logout">выйти</button>
+           </div>
+          </div>
+          </div>
       </div>
     </div>
     <div class="navbar navbar-expand-lg navbar-light bg-light">
@@ -146,11 +155,42 @@ l-11 -37 -88 -6 c-176 -13 -328 -82 -450 -206 -121 -123 -180 -245 -202 -414
   </header>
 </template>
 
+<script>
+
+export default {
+  data: () => ({
+    authMenu: false
+  }),
+  methods: {
+    logout() {
+      this.$store.commit('auth/logout')
+      this.$store.commit('auth/addLocalStorage')
+    }
+  }
+}
+</script>
+
 <style scoped lang="scss">
   .svg-logo {
     height: 3rem;
     path {
       fill: #ad5472;
+    }
+  }
+
+  .user {
+    .menu {
+      background: #ad5472;
+      color: white;
+      z-index: 100;
+      bottom: -255%;
+      left: -100%;
+      border-radius: 10px;
+      box-shadow: 11px 13px 8px 0 rgba(34, 60, 80, 0.3);
+      padding: 0.5rem;
+      a {
+        color: white;
+      }
     }
   }
 
