@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="card mx-5 mb-3 shadow" style="margin-right: 0">
+    <div class="card mb-3 shadow" style="margin-right: 0">
       <h2 class="m-1">Категории</h2>
 
       <hr class="mb-0"/>
@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <div class="card mx-5 mb-3 shadow" style="margin-right: 0">
+    <div class="card mb-3 shadow" style="margin-right: 0">
       <h2 class="m-1">Теги</h2>
 
       <hr  class="mb-0"/>

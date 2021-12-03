@@ -77,8 +77,13 @@
 
 <script>
 
+
 export default {
   layout: 'admin',
+  beforeRouteEnter(to,from, next) {
+    console.log('lol')
+    next()
+  },
   data: () => ({
     dataInput: {
       title: '',
@@ -160,7 +165,6 @@ export default {
 
 
   created () {
-    console.log(this.$store.state.admin.dataInput)
   }
 }
 </script>
