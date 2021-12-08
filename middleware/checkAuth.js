@@ -1,6 +1,3 @@
-export default ({app}) => {
-  app.router.beforeEach((to,from, next)=> {
-    console.log(app.store.getters['auth/isAuthenticated'])
-    next()
-  })
+export default function ({store}) {
+  store.commit('auth/addLocalStorage')
 }

@@ -17,8 +17,9 @@ export default {
     ],
     script: [
       {
-        src: '/js/bootstrap.bundle.js'
-      }
+        src: '/js/bootstrap.bundle.min.js',
+        body: true
+      },
     ]
   },
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -27,24 +28,21 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/route'
-    ],
+    { src: '~/plugins/bootstrap.client.js' },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
-
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    ['cookie-universal-nuxt', {alias: 'cookies'}]
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
-  router: {
-    middleware: ['checkAuth']
-  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
@@ -53,6 +51,10 @@ export default {
   buildModules: [
     '@nuxtjs/fontawesome'
   ],
+
+  router: {
+    middleware: ['checkAuth']
+  },
 
   fontawesome:{
     component:'fa',

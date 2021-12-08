@@ -80,9 +80,12 @@
 
 export default {
   layout: 'admin',
-  beforeRouteEnter(to,from, next) {
-    console.log('lol')
-    next()
+  middleware({app, res , redirect}) {
+    console.log(app.$cookies.get('lang'))
+    app.store.getters['auth/isAuthenticated'] ? '' : redirect('/')
+  },
+  meta: {
+    admin: true
   },
   data: () => ({
     dataInput: {

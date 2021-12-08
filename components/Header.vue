@@ -39,16 +39,17 @@
           <button v-if="!$store.getters['auth/isAuthenticated']" class="btn btn-outline-light" @click="$router.push('/auth')">
             войти
           </button>
-          <div class="position-relative user" v-else-if="$store.getters['auth/isAuthenticated']">
-           <button class="btn btn-mm" @click="authMenu = !authMenu">
+          <div class="position-relative user" v-else-if="$store.getters['auth/isAuthenticated']" @mouseleave="authMenu = false">
+           <button class="btn btn-mm" @mouseenter="authMenu = true">
              {{ $store.state.auth.name }}
            </button>
            <div class="menu position-absolute" v-if="authMenu">
-             <nuxt-link type="button" to="/admin/add_recipe">панель администратора</nuxt-link>
-             <button class="btn text-white" @click="logout">выйти</button>
+             <button class="btn btn-mm w-100" @click="$router.push('/admin/add_recipe')">панель администратора</button>
+             <button class="btn w-100 btn-mm" @click="logout">выйти</button>
            </div>
+<!--           <div v-if="authMenu" @click="authMenu = false" class="dropdown-bg position-fixed vw-100 vh-100"></div>-->
           </div>
-          </div>
+        </div>
       </div>
     </div>
     <div class="navbar navbar-expand-lg navbar-light bg-light">
@@ -165,6 +166,7 @@ export default {
     logout() {
       this.$store.commit('auth/logout')
       this.$store.commit('auth/addLocalStorage')
+      this.$router.push('/')
     }
   }
 }
@@ -178,16 +180,22 @@ export default {
     }
   }
 
+  .dropdown-bg {
+    background: #00000001;
+    z-index: 99;
+    left: 0vw;
+    top: 0vh;
+  }
+
   .user {
     .menu {
       background: #ad5472;
       color: white;
       z-index: 100;
-      bottom: -255%;
+      bottom: -230%;
       left: -100%;
       border-radius: 10px;
       box-shadow: 11px 13px 8px 0 rgba(34, 60, 80, 0.3);
-      padding: 0.5rem;
       a {
         color: white;
       }

@@ -14,29 +14,29 @@ export const state = function () {
 export const mutations = {
   setMail (state, mail) {
     state.mail = mail
-    localStorage.setItem(MAIL_KEY, mail)
+    this.$cookies.set(MAIL_KEY, mail)
   },
   setName (state, name) {
     state.name = name
-    localStorage.setItem(NAME_KEY, name)
+    this.$cookies.set(NAME_KEY, name)
   },
   setToken (state, token) {
     state.token = token
-    localStorage.setItem(TOKEN_KEY, token)
+    this.$cookies.set(TOKEN_KEY, token)
   },
   logout (state) {
     state.token = null
-    localStorage.removeItem(MAIL_KEY)
-    localStorage.removeItem(NAME_KEY)
-    localStorage.removeItem(TOKEN_KEY)
+    this.$cookies.remove(MAIL_KEY)
+    this.$cookies.remove(NAME_KEY)
+    this.$cookies.remove(TOKEN_KEY)
   },
   setErrorAuth (state, error) {
     state.error = error
   },
   addLocalStorage(state) {
-    state.token = localStorage.getItem(TOKEN_KEY)
-    state.name = localStorage.getItem(NAME_KEY)
-    state.mail = localStorage.getItem(MAIL_KEY)
+    state.token = this.$cookies.get(TOKEN_KEY)
+    state.name = this.$cookies.get(NAME_KEY)
+    state.mail = this.$cookies.get(MAIL_KEY)
   }
 }
 

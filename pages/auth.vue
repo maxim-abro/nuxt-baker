@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <form @submit.prevent="$store.dispatch('auth/fetchAuth', inputData)">
+
+    <form @submit.prevent="$store.dispatch('auth/fetchAuth', inputData); $router.push('/')">
       <div class="row mb-3">
         <label class="col-sm-1" for="mail">Почта:</label>
         <div class="col-sm-6">
