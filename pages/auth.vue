@@ -1,7 +1,7 @@
 <template>
   <div class="container">
 
-    <form @submit.prevent="$store.dispatch('auth/fetchAuth', inputData); $router.push('/')">
+    <form @submit.prevent="pushForm">
       <div class="row mb-3">
         <label class="col-sm-1" for="mail">Почта:</label>
         <div class="col-sm-6">
@@ -13,6 +13,7 @@
         <label class="col-sm-1" for="password">Пароль:</label>
         <div class="col-sm-6">
           <input v-model="inputData.password" type="password" class="form-control" id="password"/>
+          <small style="color: red;" v-if="$store.getters['auth/getErrorAuth']">{{ $store.getters['auth/getErrorAuth'] }}</small>
         </div>
       </div>
 
@@ -31,6 +32,16 @@ export default {
       mail: '',
       password: ''
     }
-  })
+  }),
+  methods: {
+    async pushForm() {
+      const data = await this.$store.dispatch('auth/fetchAuth', this.inputData)
+      if (data !== 200) {
+        return
+      } else {
+        this.$router.push('/')
+      }
+    }
+  }
 }
 </script>

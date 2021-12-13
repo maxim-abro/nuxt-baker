@@ -44,14 +44,14 @@ export const actions = {
   async fetchAuth ({ commit }, payload) {
     try {
       const res = await this.$axios.post('http://annabaker.ru/api/v1/auth/login', { ...payload })
-      console.log(res.data)
       commit('setToken', res.data.accessToken)
       commit('setName', res.data.name)
       commit('setMail', res.data.mail)
       commit('setErrorAuth', '')
+      return res.status
     } catch (e) {
-      console.log(e.response.data.message)
       commit('setErrorAuth', e.response.data.message)
+      return e.response.status
     }
   }
 }

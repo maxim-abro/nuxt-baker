@@ -1,6 +1,6 @@
 <template>
   <header class="header shadow mb-5">
-    <div class="navbar navbar-expand-lg navbar-mm bg-mm">
+    <div class="navbar d-none d-lg-flex navbar-expand-lg navbar-mm bg-mm">
       <div class="container d-flex justify-content-between p-0">
         <div class="left">
           <a href="#" class="social-link">
@@ -53,7 +53,7 @@
       </div>
     </div>
     <div class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container d-flex justify-content-between p-0">
+      <div class="container d-flex justify-content-between p-0 px-2 px-lg-0">
         <div class="left">
           <router-link to="/" class="navbar-brand text-mm d-flex align-items-center">
             <svg
@@ -151,8 +151,13 @@ l-11 -37 -88 -6 c-176 -13 -328 -82 -450 -206 -121 -123 -180 -245 -202 -414
             </li>
           </ul>
         </div>
+        <button class="btn btn-mm d-block d-lg-none" @click="$store.commit('navBar/toggleShow')">
+          <fa class="text-white chevron" icon="bars"/>
+        </button>
       </div>
     </div>
+
+    <mobile-aside/>
   </header>
 </template>
 
@@ -160,7 +165,7 @@ l-11 -37 -88 -6 c-176 -13 -328 -82 -450 -206 -121 -123 -180 -245 -202 -414
 
 export default {
   data: () => ({
-    authMenu: false
+    authMenu: false,
   }),
   methods: {
     logout() {
