@@ -80,12 +80,17 @@
 
 export default {
   layout: 'admin',
-  middleware({app, res , redirect}) {
-    console.log(app.$cookies.get('lang'))
+  async middleware({app, res , redirect, $axios, $cookies}) {
     app.store.getters['auth/isAuthenticated'] ? '' : redirect('/')
-  },
-  meta: {
-    admin: true
+
+    await $axios.post('http://annabaker.ru/api/v1/auth/check', {}, {
+      headers: {
+        Authorization: `Bearer ${$cookies.get('jwt-token')}`
+      }
+    }).catch(i => {
+      app.store.commit('auth/logout')
+      redirect('/')
+    })
   },
   data: () => ({
     dataInput: {

@@ -18,11 +18,15 @@ export const mutations = {
   },
   setName (state, name) {
     state.name = name
-    this.$cookies.set(NAME_KEY, name)
+    this.$cookies.set(NAME_KEY, name, {
+      maxAge: 2678400
+    })
   },
   setToken (state, token) {
     state.token = token
-    this.$cookies.set(TOKEN_KEY, token)
+    this.$cookies.set(TOKEN_KEY, token, {
+      maxAge: 2678400
+    })
   },
   logout (state) {
     state.token = null
