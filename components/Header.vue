@@ -17,7 +17,7 @@
         </div>
         <div class="right d-flex">
           <div class="input-group mx-5">
-            <button id="button-addon1" class="btn btn-outline-light btn-search" type="button">
+            <button id="button-addon1" class="btn btn-outline-light btn-search" type="button" @click="asyncSearch(qSearch)">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 x="0px"
@@ -34,7 +34,7 @@
                 />
               </svg>
             </button>
-            <input type="search" class="form-control" placeholder="поиск" aria-describedby="button-addon1">
+            <input type="search" class="form-control" placeholder="поиск" aria-describedby="button-addon1" v-model="qSearch">
           </div>
           <button v-if="!$store.getters['auth/isAuthenticated']" class="btn btn-outline-light" @click="$router.push('/auth')">
             войти
@@ -166,12 +166,23 @@ l-11 -37 -88 -6 c-176 -13 -328 -82 -450 -206 -121 -123 -180 -245 -202 -414
 export default {
   data: () => ({
     authMenu: false,
+    qSearch: ''
   }),
   methods: {
     logout() {
       this.$store.commit('auth/logout')
       this.$store.commit('auth/addLocalStorage')
       this.$router.push('/')
+    },
+    asyncSearch(q) {
+      this.$router.push({
+        path: '/search',
+        query: {
+          q: q,
+          type: 'name'
+        }
+      })
+      this.qSearch = ''
     }
   }
 }

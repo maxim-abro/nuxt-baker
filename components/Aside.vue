@@ -7,11 +7,11 @@
 
       <div class="container-fluid p-0">
         <div class="list-group">
-          <a href="#" @click.prevent="getCat('6197876df838a519add44bee')" class="list-group-item list-group-item-action custom-link border-0">Торты</a>
-          <a href="#" @click.prevent="getCat('619787a0f838a519add44bf1')" class="list-group-item list-group-item-action custom-link border-0">Мини десерты</a>
-          <a href="#" @click.prevent="getCat('619787b6f838a519add44bf4')" class="list-group-item list-group-item-action custom-link border-0">Макароны</a>
-          <a href="#" @click.prevent="getCat('619787bef838a519add44bf6')" class="list-group-item list-group-item-action custom-link border-0">Начинки</a>
-          <a href="#" @click.prevent="getCat('619787c4f838a519add44bf8')" class="list-group-item list-group-item-action custom-link border-0">Декор</a>
+          <a href="#" @click.prevent="getCat('торты')" class="list-group-item list-group-item-action custom-link border-0">Торты</a>
+          <a href="#" @click.prevent="getCat('мини десерты')" class="list-group-item list-group-item-action custom-link border-0">Мини десерты</a>
+          <a href="#" @click.prevent="getCat('макароны')" class="list-group-item list-group-item-action custom-link border-0">Макароны</a>
+          <a href="#" @click.prevent="getCat('начинки')" class="list-group-item list-group-item-action custom-link border-0">Начинки</a>
+          <a href="#" @click.prevent="getCat('декор')" class="list-group-item list-group-item-action custom-link border-0">Декор</a>
         </div>
       </div>
     </div>
@@ -26,7 +26,7 @@
           v-for="(i, idx) in $store.getters['tags/getTags']"
           class="link-mm text-decoration-none"
           :key="idx"
-          :to="`/search-/${i._id}`"
+          :to="`/search?type=tag&q=${i.title}`"
         >
           {{ `#${i.title}${idx !== $store.state.tags.tags.length - 1 ? ',' : ''}` }}
         </nuxt-link>
@@ -41,8 +41,8 @@ export default {
     getCat(name) {
       this.$router.push({
         query: {
-          name: name,
-          page: 1
+          type: 'category',
+          q: name
         },
         path: '/search'
       })

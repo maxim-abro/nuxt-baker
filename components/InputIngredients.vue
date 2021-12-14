@@ -1,5 +1,5 @@
 <template>
-  <div class="col-8">
+  <div class="col-12 col-lg-8">
     <h5>Ингредиент №{{ idx + 1 }}</h5>
     <div class="mb-2">
       <label class="form-label">Название ингредиента №{{ idx + 1 }}</label>

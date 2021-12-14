@@ -53,7 +53,9 @@ export default {
   ],
 
   router: {
-    middleware: ['checkAuth']
+    middleware: ['checkAuth'],
+    linkActiveClass: 'active',
+    linkExactActiveClass: 'active',
   },
 
   fontawesome:{

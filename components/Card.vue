@@ -1,7 +1,9 @@
 <template>
   <div :key="id" class="col">
     <div class="card">
-      <img :src="arr.img" style="max-height: 15rem" class="card-img-top" :alt="arr.title" @click="toCard(arr._id)">
+      <div class="img-wrap">
+        <img :src="arr.img" style="max-height: 15rem" class="card-img-top" :alt="arr.title" @click="toCard(arr._id)">
+      </div>
       <div class="card-body">
         <h5 class="card-title" @click="toCard(arr._id)">
           {{ arr.title }}
@@ -87,8 +89,8 @@ export default {
     }
   },
   fetch () {
-    const d = new Date(this.arr.date * 1000)
-    this.dates = `${d.getDate() + 1}.${d.getMonth() + 1}`
+    const d = new Date(this.arr.date * 1)
+    this.dates = `${d.getDate() + 1}.${d.getMonth() + 1}.${d.getFullYear()}`
   },
   methods: {
     toCard (id) {
@@ -103,6 +105,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  .card-body {
+    height: 90px;
+  }
   .btn-like-comment {
     transition: 0.3s;
     .svg-like-comment {
