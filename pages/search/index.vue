@@ -49,7 +49,7 @@
 export default {
   layout: 'default',
   async asyncData({route, state, $axios}) {
-    const req = await $axios.get(`http://annabaker.ru/api/v1/search?q=${encodeURIComponent(route.query.q)}&type=${route.query.type}`)
+    const req = await $axios.get(`https://annabaker.ru/api/v1/search?q=${encodeURIComponent(route.query.q)}&type=${route.query.type}`)
 
     return {
       searchReq: req.data,
@@ -66,7 +66,7 @@ export default {
   },
   methods: {
     async searchProducts(q, type) {
-      const req = await this.$axios.get(`http://annabaker.ru/api/v1/search?q=${encodeURIComponent(q)}&type=${type}`)
+      const req = await this.$axios.get(`https://annabaker.ru/api/v1/search?q=${encodeURIComponent(q)}&type=${type}`)
       this.searchReq = req.data
     }
   },

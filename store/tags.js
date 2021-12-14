@@ -7,7 +7,7 @@ export const state = function () {
 
 export const actions = {
   async fetchTags ({ commit }) {
-    const res = await this.$axios.get('http://annabaker.ru/api/v1/tag')
+    const res = await this.$axios.get('https://annabaker.ru/api/v1/tag')
     commit('setTags', res.data)
   }
 }

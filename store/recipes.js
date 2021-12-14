@@ -7,11 +7,11 @@ export const state = function () {
 
 export const actions = {
   async fetchRecipes ({ state, commit }) {
-    const res = await this.$axios.get('http://annabaker.ru/api/v1/recipe/')
+    const res = await this.$axios.get('https://annabaker.ru/api/v1/recipe/')
     commit('setRecipes', res.data)
   },
   async fetchNowRecipe ({ state, commit }, id) {
-    const res = await this.$axios.get(`http://annabaker.ru/api/v1/recipe/${id}`)
+    const res = await this.$axios.get(`https://annabaker.ru/api/v1/recipe/${id}`)
     commit('setNowRecipe', res.data)
   }
 }

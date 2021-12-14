@@ -83,7 +83,7 @@ export default {
   async middleware({app, res , redirect, $axios, $cookies}) {
     app.store.getters['auth/isAuthenticated'] ? '' : redirect('/')
 
-    await $axios.post('http://annabaker.ru/api/v1/auth/check', {}, {
+    await $axios.post('https://annabaker.ru/api/v1/auth/check', {}, {
       headers: {
         Authorization: `Bearer ${$cookies.get('jwt-token')}`
       }
@@ -156,7 +156,7 @@ export default {
       this.dataInput.tags = this.dataInput.tags.split(',').map(i => i.trim())
       console.log(this.dataInput)
       this.$
-      const res = await this.$axios.post('http://annabaker.ru/api/v1/recipe',  this.dataInput, {
+      const res = await this.$axios.post('https://annabaker.ru/api/v1/recipe',  this.dataInput, {
         headers: {
           Authorization: `Bearer ${this.$cookies.get('jwt-token')}`
         },

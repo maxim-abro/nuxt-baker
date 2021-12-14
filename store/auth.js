@@ -47,7 +47,7 @@ export const mutations = {
 export const actions = {
   async fetchAuth ({ commit }, payload) {
     try {
-      const res = await this.$axios.post('http://annabaker.ru/api/v1/auth/login', { ...payload })
+      const res = await this.$axios.post('https://annabaker.ru/api/v1/auth/login', { ...payload })
       commit('setToken', res.data.accessToken)
       commit('setName', res.data.name)
       commit('setMail', res.data.mail)
