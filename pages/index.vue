@@ -38,7 +38,7 @@ export default {
       this.$store.commit('recipes/getLikeToRecipe', id)
       const arr = this.$store.getters['recipes/getRecipes']
       const nowArr = arr.filter(i => i._id === id)
-      await this.$axios.put(`http://annabaker.ru/api/v1/recipe/${id}`, nowArr[0])
+      await this.$axios.put(`https://annabaker.ru/api/v1/recipe/${id}`, nowArr[0])
     },
     changeDate (d, id) {
       this.$store.commit('recipes/changeDate', d, id)

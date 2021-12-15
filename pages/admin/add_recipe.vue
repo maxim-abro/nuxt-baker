@@ -39,11 +39,11 @@
         <h3 class="form-label">Категория</h3>
         <select class="form-select" v-model="dataInput.category" aria-label="Default select example">
           <option value="" selected>Выберите категорию</option>
-          <option value="6197876df838a519add44bee">Торты</option>
-          <option value="619787a0f838a519add44bf1м">Мини десерты</option>
-          <option value="619787b6f838a519add44bf4">Макароны</option>
-          <option value="619787bef838a519add44bf6">Начинки</option>
-          <option value="619787c4f838a519add44bf8">Декор</option>
+          <option value="61b99fcd97e56e7576ddf2ba">Торты</option>
+          <option value="61b9a05a97e56e7576ddf34b">Мини десерты</option>
+          <option value="61b9a06497e56e7576ddf34d">Макароны</option>
+          <option value="61b9a06e97e56e7576ddf34f">Начинки</option>
+          <option value="61b9a0c897e56e7576ddf351">Декор</option>
         </select>
       </div>
 
