@@ -44,7 +44,7 @@
              {{ $store.state.auth.name }}
            </button>
            <div class="menu position-absolute" v-if="authMenu">
-             <button class="btn btn-mm w-100" @click="$router.push('/admin/add_recipe')">панель администратора</button>
+             <button class="btn btn-mm w-100" @click="$router.push('/admin/')">панель администратора</button>
              <button class="btn w-100 btn-mm" @click="logout">выйти</button>
            </div>
 <!--           <div v-if="authMenu" @click="authMenu = false" class="dropdown-bg position-fixed vw-100 vh-100"></div>-->

@@ -154,8 +154,6 @@ export default {
     },
     async submitForm () {
       this.dataInput.tags = this.dataInput.tags.split(',').map(i => i.trim())
-      console.log(this.dataInput)
-      this.$
       const res = await this.$axios.post('https://annabaker.ru/api/v1/recipe',  this.dataInput, {
         headers: {
           Authorization: `Bearer ${this.$cookies.get('jwt-token')}`
