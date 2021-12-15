@@ -244,4 +244,14 @@ export default {
       }
     }
   }
+
+  .header {
+    @media screen and (max-width: 992px) {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      margin-bottom: 30px;
+    }
+  }
 </style>
