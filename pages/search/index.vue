@@ -24,20 +24,20 @@
 
 
 
-    <div class="row row-cols-1 row-cols-lg-3" v-if="!searchReq.length">
+<!--    <div class="row row-cols-1 row-cols-lg-3" v-if="status == 200">-->
 
-      <div class="col">
-        <card :arr="searchReq"/>
-      </div>
-    </div>
+<!--      <div class="col">-->
+<!--        <card :arr="searchReq"/>-->
+<!--      </div>-->
+<!--    </div>-->
 
-    <div class="row row-cols-1 row-cols-lg-3" v-else>
+    <div class="row row-cols-1 row-cols-lg-3" v-if="searchReq.length > 0">
       <div class="col"v-for="item in searchReq">
         <card :arr="item"/>
       </div>
     </div>
 
-    <div class="row row-cols-1 row-cols-lg-3" v-if="!searchReq">
+    <div class="row row-cols-1" v-else>
       <h1>Товары не найдены</h1>
     </div>
 
@@ -48,20 +48,30 @@
 
 export default {
   layout: 'default',
+  head() {
+    return {
+      title: this.head
+    }
+  },
   async asyncData({route, state, $axios}) {
     const req = await $axios.get(`https://annabaker.ru/api/v1/search?q=${encodeURIComponent(route.query.q)}&type=${route.query.type}`)
-
     return {
       searchReq: req.data,
       q: route.query.q,
-      type: route.query.type
+      type: route.query.type,
+      status: req.status
     }
+  },
+  mounted() {
+    console.log(this.status)
   },
   data() {
     return {
       searchReq: null,
       q: '',
-      type: ''
+      type: '',
+      status: '',
+      head: `поиск ${this.$route.query.q} | annabaker.ru рецепты от Анны.`
     }
   },
   methods: {
