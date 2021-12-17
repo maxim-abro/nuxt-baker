@@ -35,7 +35,7 @@
         <hr />
         <button v-if="!$store.getters['auth/isAuthenticated']" class="btn btn-light text-mm" @click="$router.push('/auth'); $store.commit('navBar/toggleShow')">войти</button>
         <div class="user-bar" v-else-if="$store.getters['auth/isAuthenticated']">
-          <button class="btn btn-mm w-100" @click="$router.push('/admin/add_recipe'); $store.commit('navBar/toggleShow')">панель администратора</button>
+          <button class="btn btn-mm w-100" @click="$router.push('/admin'); $store.commit('navBar/toggleShow')">панель администратора</button>
           <button class="btn w-100 btn-mm" @click="logout">выйти</button>
         </div>
       </div>
